@@ -1,0 +1,90 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz, amssymb,color,enumitem,etoolbox}
+\usepackage{multirow, makecell, bigstrut, booktabs, float}
+\usetikzlibrary{chains,arrows.meta,quotes,bending, calc}
+\usepackage{lipsum}
+\usepackage{relsize}
+\usepackage[shortcuts]{extdash}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{mdframed}
+%\usepackage{showframe}
+\usepackage{microtype}
+\usepackage{systeme,mathtools}
+\documentclass[11pt]{book}
+\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage[paperwidth=212mm, paperheight=305mm]{geometry}
+\textwidth = 150mm
+\usepackage{titleps}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{titleps}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+\usepackage{scrlayer-scrpage}
+\usepackage{blindtext}
+\usepackage{sectsty}
+\usepackage{amsthm}
+\usepackage{tikz}
+\geometry{legalpaper, portrait, margin=31mm}
+\usetikzlibrary{chains,shapes.multipart}
+\usetikzlibrary{shapes}
+\usetikzlibrary{automata,positioning}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage[none]{hyphenat}
+\usepackage{ragged2e}
+\usepackage{scrlayer-scrpage}
+\usepackage{blindtext}
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+\begin{document} 
+\markboth{}{}
+{\textbf {426 Elementary Queueing Theory}}
+\hline
+\section{\textbf{\large{11.5 Finite-Capacity Systems - The M/M/1/K Queue}}}
+
+We now turn our attention to the \textit{M/M/}1\textit{/K}, illustrated graphically in Figure 11.18. Customers arrive according to a Poisson process at rate $\lambda$ and receive service that is exponentially distributed with a mean service time of 1/$\mu$ from a single server. The difference from the M/M/1 queue is that at most K customers are allowed into the system. A customer who arrives to find the system full simply disappears. That customer is not permitted to enter the system. There is no halt to the arrival process, which continues to churn out customers according to a Poisson process at rate $\lambda$, but only those who arrive to find strictly fewer than K present are permitted to enter. In communication systems, rejected customers are called "lost" customers and the systems is called a "loss" system. In the particular case of K = 1, in which a customer is permitted to enter only if the server is idle, the term "blocked calls cleared" is used. In others contexts, the \textit{M/M/}1\textit{/K} queue is referred to as a queue with truncation.
+
+\smallskip
+\centering{\caption{The \textit{M/M/}1\textit{/K}queue$$}}
+\smallskip
+
+To analyze the \textit{M/M/}1\textit{/K} queue, we use the birth-death model and choose the parameters so that the Poisson arrivals stop as soon as K customers are present. The parameters of the exponential service time distribution are unchanged. Thus
+$$ \lambda_{(n)} = \begin{cases} $\lambda, & \mbox n  { < K,}$ \\ $0, & \mbox{if } n\mbox{\geqslant K}$ \end{cases} $$
+    
+    $$\mu_{n} = \mu {\mbox {for}} n \mbox = {1, 2, ..., K.}$$
+\smallskip
+\begin{tikzpicture}
+    [
+      every on chain/.style={circle, draw, minimum size=30pt},
+      my join/.style={looseness=1.75, font=\scriptsize, >={Stealth[bend]}},
+      start chain=main going right,
+      node distance=.5,
+    ]
+    \foreach \i/\j/\k/\l in {0, 1//{$\lambda$}/{$\mu$}, 2//{$\lambda$}/{$\mu$}, K-2/dashed//, K-1//{$\lambda$}/{$\mu$}, K//{$\lambda$}/{$\mu$}}
+    \node [on chain, join=by {\j, <-, out=-86.5, in=-93.5, my join, "\l"'}, join=by {"\k", \j, ->, out=86.5, in=93.5, my join}] {\i};
+\end{tikzpicture} \newline
+\caption{$${State transitions in \textit{M/M/}1\textit{/K} queue}$$}
+\label{figa11.18.}
+\end{figure}
+    
+\smallskip
+  
+The state transition diagram is shown in Figure 11.19. The principal equation for birth-death processes is given by
+
+\smallskip
+
+$${n} = p_{0}\prod_{i=1}^{n}\frac{\lambda_{i-1}}{\mu_{i}},  {n\mbox{\geqslant1,}$$
+
+\smallskip
+
+and this equation continues to hold in the case when the state space is truncated. Since this continuous-time Markov chain is finite and irreducible for all strictly positive {$\lambda$} and {$\mu$}, it follows
+
+\end{document}
