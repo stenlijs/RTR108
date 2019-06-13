@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{amssymb}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{QUANTUM OPERATORS}
+\cfoot{645}
+
+Simple identities amongst commutators include the following:
+\begin{center}
+\begin{tabular}
+$$[A,B + C] = [A,B] + [A,C],$$  (19.17)\\$$[A + B,C] = [A,C] + [B,C],$$  (19.18)\\$$[A,BC] = ABC - BCA - BAC$$\\$$= (AB - BA)C + B(AC - CA)$$\\$$= [A,B]C + B[A,C],$$ (19.19)\\$$[AB,C] = A[B,C] + [A,C]B.$$  (19.20)\\
+\end{tabular}
+\end{center}
+
+\begin{mdframed}[backgroundcolor = white]
+{$\blacktriangleright$ If A and B are two linear operators that both commute their commutator, prove that[A,B^n] = nB^{(n-1)}[A,B] and that [A^n,B] = nA^{(n-1)}[A,B].}
+\end{mdframed}
+
+Define ${C_n}$ by ${C_n} = [A,{B^n}]$. We aim to find a reduction formula for ${C_n}$:\\
+
+${C_n} = [A,B {B^({(n-1)}})]$ \\
+$       = [A,B]{B^{(n-1)}} + B [A,{B^{(n-1)}}], using (19.19),$ \\
+$       = {B^{(n-1)}} [A,B] + B [A,{B^{(n-1)}}], since [[A,B], B] = 0,$ \\
+$       = {B^{(n-1)}} [A,B] + B{C_(n-1)}, the required reduction formula,$ \\
+$       = {B^{(n-1)}} [A,B] + B{B^{(n-2)}} [A,B] + B{C_{n-2}}, applying the formula,$ \\
+$       = 2B{^(n-1)} [A,B] + B{^2}C_{n-2}$ \\
+$       = ...$ \\
+$       =n{B^(n-1)} [A,B] + {B^n}{C_0}$ \\
+
+However, $C{_0}=[A,I] = 0$ and so $C{_n} = nB^{(n-1)}[A,B]$. 
+    
+    Using equation (19.16) and interchanging A and B in the result just obtained we find
+    $$[A{^n},B] = -[B,A{^n}] = -nA^{(n-1)}[B,A] = nA^{(n-1)}[A,B], $$
+    as stated in the question. \blacktriangleleft \\    
+    
+    As the power of a linear operator can be defined, so can its exponential; this situation parallels that for matrices, which are of course particular set of operators that act upon state functions represented by vectors. The definition follows that for the exponential of scalar or matrix, namely \\
+    $$expA = \sum_{n=0}^{\infty} \frac{A^{n}}{n!}. $$ \\
+    Related functions of A, such as $sin$A and $cos$A, can be defined in a similiar way.
+
+    Since any linear operator commutes with itself, when two functions of it are combined in some way, the result takes a form similar to that for the corresponding functions of scalar quantities. Consider, for example, the function $f(A)$ defined by $f=(A)$ = 2sin$A$cos$A$. Expressing sin$A$ and cos $A$ in terms of their
+\end{document} 
